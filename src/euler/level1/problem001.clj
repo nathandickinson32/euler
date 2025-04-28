@@ -8,12 +8,6 @@
           (set
             (concat
               (get-multiples-of-x n 3)
-              (get-multiples-of-x n 5))))
-  ;(->> [3 5]
-  ;     (map #(get-multiples-of-x n %))
-  ;     (apply concat)
-  ;     set
-  ;     (reduce +))
-  )
+              (get-multiples-of-x n 5)))))
 
 

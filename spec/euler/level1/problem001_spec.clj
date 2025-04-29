@@ -3,11 +3,15 @@
     [speclj.core]
     [euler.level1.problem001]))
 
+;If we list all the natural numbers below 10 that are multiples of 3 or 5
+; we get 3,5,6 and 9.
+; The sum of these multiples is 23.
+; Find the sum of all the multiples of 3 or 5 below 1000
 ; http://projecteuler.net/index.php?section=problems&id=1
 
 (describe "Euler Problem #1"
 
-  (it "finds the multiples of x of n when x = 5"
+  (it "finds the multiples of x within max-range when x = 5"
     (should= [] (get-multiples-of-x 0 5))
     (should= [] (get-multiples-of-x 1 5))
     (should= [] (get-multiples-of-x 2 5))
@@ -21,7 +25,7 @@
     (should= [5] (get-multiples-of-x 10 5))
     (should= [5 10] (get-multiples-of-x 11 5))
     )
-  (it "finds the multiples of x of n when x = 3"
+  (it "finds the multiples of x within max-range when x = 3"
     (should= [] (get-multiples-of-x 0 3))
     (should= [] (get-multiples-of-x 1 3))
     (should= [] (get-multiples-of-x 2 3))

@@ -1,10 +1,20 @@
 (ns euler.level1.problem002)
 
-(defn get-fibonacci-to-n [n]
-  (when (> n 1)
-    (loop [sequence [1 2]]
+(defn recursive-fib [sum n-2 n-1 limit]
+  )
+
+(defn recursive-fib [sequence limit]
+  (let [next-number-in-sequence (apply + (take-last 2 sequence))]
+    (if (> next-number-in-sequence limit)
+      sequence
+      (recur (conj sequence next-number-in-sequence) limit))))
+
+(defn get-fibonacci-to-n [limit]
+  (when true                                                ; (> n 1)
+    (recursive-fib [1 2] limit)
+    #_(loop [sequence [1 2]]
       (let [next-number-in-sequence (apply + (take-last 2 sequence))]
-        (if (> next-number-in-sequence n)
+        (if (> next-number-in-sequence limit)
           sequence
           (recur
             (conj sequence next-number-in-sequence)))))

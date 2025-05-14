@@ -15,6 +15,23 @@
 
 (describe "Euler problem 6"
 
+  #_(it "evaluates the sum of squares"
+    (let [initial-sum 0]
+
+      (should= 1 (sum-of-squares 1 initial-sum))
+      (should= 5 (sum-of-squares 2 initial-sum))
+      (should= 14 (sum-of-squares 3 initial-sum))
+      (should= 30 (sum-of-squares 4 initial-sum))
+      (should= 55 (sum-of-squares 5 initial-sum))
+      (should= 91 (sum-of-squares 6 initial-sum))
+      (should= 140 (sum-of-squares 7 initial-sum))
+      (should= 204 (sum-of-squares 8 initial-sum))
+      (should= 285 (sum-of-squares 9 initial-sum))
+      (should= 385 (sum-of-squares 10 initial-sum))
+      (should= 338350 (sum-of-squares 100 initial-sum))
+
+      ))
+
   (context "sum of the squares of the first x amount of natural numbers"
 
     (it "returns sum of squares"
@@ -58,7 +75,7 @@
 
     )
 
-  (context "solves euler 4"
+  (context "solves euler 6"
 
     (it "finds the difference between the sum of the squares
     of the first one hundred natural numbers and the square of the sum"

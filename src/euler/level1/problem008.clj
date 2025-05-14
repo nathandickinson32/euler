@@ -1,22 +1,25 @@
 (ns euler.level1.problem008)
 
 (defn multiply-digits [n]
-  (reduce * (map #(Integer/parseInt (str %)) (str n))))
+  (->>
+    ;char-seq
+       n
+       str
+       (map #(Integer/parseInt (str %)))
+       (apply *)))
 
-(defn sliding-substring [digit-as-string substring-length]
-  (map #(apply str %) (partition substring-length 1 digit-as-string)))
+; 1234 => "1234" => (\1 \2 \3 \4) => ("1" "2" "3" "4") => (1 2 3 4)
 
-(defn max-product [digit-as-string substring-length]
-  (->> (sliding-substring digit-as-string substring-length)
+(defn ->all-substrings [number-as-string substring-length]
+  (->> number-as-string
+       (partition substring-length 1)
+       (map #(apply str %))))
+
+;partition-all
+
+; "1234" => ((\1 \2) (\2 \3) (\3 \4)) => ("12" "23" "34")
+
+(defn max-product [number-as-string substring-length]
+  (->> (->all-substrings number-as-string substring-length)
        (map multiply-digits)
        (apply max)))
-
-
-; 1000 digit number
-; get the product of first 13 digits
-; move one digit over
-; get product of those 13 digits
-; compare and take larger
-; keep shifting one digit and getting 13 digit product
-; keep comparing and keeping largest product
-; go through 1000 digit number

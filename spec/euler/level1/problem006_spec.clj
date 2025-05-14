@@ -63,7 +63,7 @@
     (it "finds the difference between the sum of the squares
     of the first one hundred natural numbers and the square of the sum"
 
-      (should= nil (euler-4 []))
+      (should= 0 (euler-4 0))
       (should= 0 (euler-4 1))
       (should= 4 (euler-4 2))
       (should= 22 (euler-4 3))

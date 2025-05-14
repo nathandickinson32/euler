@@ -1,16 +1,15 @@
 (ns euler.level1.problem006)
 
-(defn square-of-sums [amount-of-natural-numbers sum]
-  (if (zero? amount-of-natural-numbers)
+(defn square-of-sums [n sum]
+  (if (zero? n)
     (* sum sum)
-    (recur (dec amount-of-natural-numbers) (+ amount-of-natural-numbers sum))))
+    (recur (dec n) (+ n sum))))
 
-(defn sum-of-squares [amount-of-natural-numbers sum]
-  (if (zero? amount-of-natural-numbers)
+(defn sum-of-squares [n sum]
+  (if (zero? n)
     sum
-    (recur (dec amount-of-natural-numbers) (+ (* amount-of-natural-numbers amount-of-natural-numbers) sum))))
+    (recur (dec n) (+ (* n n) sum))))
 
 (defn euler-4 [amount-of-natural-numbers]
-  (if (or (not (number? amount-of-natural-numbers)) (< amount-of-natural-numbers 0))
-    nil
-    (- (square-of-sums amount-of-natural-numbers 0) (sum-of-squares amount-of-natural-numbers 0))))
+  (- (square-of-sums amount-of-natural-numbers 0)
+     (sum-of-squares amount-of-natural-numbers 0)))

@@ -16,19 +16,11 @@
       max-palindrome
       (< b lowest-factor)
       (recur (dec a) (dec a) max-palindrome lowest-factor)
-
       :else
       (let [product (* a b)]
         (if (palindrome? product)
           (recur (dec a) (dec a) (max product max-palindrome) b)
-          (recur a (dec b) max-palindrome lowest-factor)
-          ))))
-  #_(->> (for [a (range highest-factor lowest-factor -1)
-               b (range a lowest-factor -1)
-               :let [product (* a b)]
-               :when (palindrome? product)]
-           product)
-         (apply max)))
+          (recur a (dec b) max-palindrome lowest-factor))))))
 
 (defn ->range-of-factors [number-of-digits]
   (let [lowest-factor (int (math/pow 10 (dec number-of-digits)))

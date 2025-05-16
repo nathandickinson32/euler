@@ -10,10 +10,35 @@
 ; Find the product abc
 
 
-;(describe "Euler Problem #9"
-;
-;  (it "Solves #9"
-;    (should= -1 (euler-9 -1)))
-;  )
-;
-;(run-specs)
+; 3 numbers a b c
+; must be < order (3 4 5)
+; check for pythagorean
+; check if a + b + c = 1000
+; return a * b * c
+
+
+
+
+(describe "Euler Problem #9"
+
+  (it "declares if 3 numbers are pythagorean"
+    (should= false (maybe-pythagorean? 1 2 3))
+    (should= true (maybe-pythagorean? 3 4 5))
+    (should= true (maybe-pythagorean? 8 15 17))
+    )
+
+  (it "finds-triplets"
+    (should= [[3 4 5]] (find-triplets 12))
+    )
+
+  (it "gets triple product"
+    (should= 60 (triple-product [3 4 5]))
+    )
+
+  (it "Solves #9"
+    (should= 31875000 (euler-9 1000))
+    )
+
+  )
+
+(run-specs)

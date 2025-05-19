@@ -22,11 +22,15 @@
           (recur (dec a) (dec a) (max product max-palindrome) b)
           (recur a (dec b) max-palindrome lowest-factor))))))
 
+
+
 (defn ->range-of-factors [number-of-digits]
-  (let [lowest-factor (int (math/pow 10 (dec number-of-digits)))
+  (let [lowest-factor (->> number-of-digits dec (math/pow 10) int)
         highest-factor (dec (int (math/pow 10 number-of-digits)))]
     (->sort-palindrome-list lowest-factor highest-factor)))
 
 (defn euler-4 [number-of-digits]
   (when (>= number-of-digits 2)
     (->range-of-factors number-of-digits)))
+
+

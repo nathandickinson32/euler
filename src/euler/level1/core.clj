@@ -2,9 +2,15 @@
 
 (defn square [n] (* n n))
 
+(defn filtered-primes [cursor primes]
+  (take-while #(<= (square %) cursor) primes))
+
+(defn divisible-by? [cursor prime]
+  (zero? (mod cursor prime)))
+
 (defn is-prime? [cursor primes]
-  (not-any? #(zero? (mod cursor %))
-            (take-while #(<= (square %) cursor) primes)))
+  (not-any? #(divisible-by? cursor %)
+            (filtered-primes cursor primes)))
 
 
 ;10
@@ -13,7 +19,7 @@
 ;5 x 20    20 x 5
 ;10 x 10   10 x 10
 ; we know 50 is a factor when we know 2 is a factor
-;
+
 ; 23  √23 ~ 4.7
 ; (cursor) <= (current prime^2) == (√cursor) >= (current prime)
 ; [primes 2 3 5 7 11 13 17 19]

@@ -9,13 +9,15 @@
 ; There exists exactly one Pythagorean triplet for which a + b + c = 1000.
 ; Find the product abc
 
-; 3 numbers a b c
-; must be < order (3 4 5)
-; check for pythagorean
-; check if a + b + c = 1000
-; return a * b * c
-
 (describe "Euler Problem #9"
+
+  (it "squares the input"
+    (should= 0 (square 0))
+    (should= 1 (square 1))
+    (should= 4 (square 2))
+    (should= 9 (square 3))
+    (should= 16 (square 4))
+    )
 
   (it "finds-triplets"
     (should= [] (find-triplets 10))

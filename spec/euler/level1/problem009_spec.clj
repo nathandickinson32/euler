@@ -11,14 +11,6 @@
 
 (describe "Euler Problem #9"
 
-  (it "squares the input"
-    (should= 0 (square 0))
-    (should= 1 (square 1))
-    (should= 4 (square 2))
-    (should= 9 (square 3))
-    (should= 16 (square 4))
-    )
-
   (it "finds-triplets"
     (should= [] (find-triplets 10))
     (should= [[3 4 5]] (find-triplets 12))

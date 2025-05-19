@@ -1,13 +1,11 @@
-(ns euler.level1.problem009)
-
-(defn square [n]
-  (* n n))
+(ns euler.level1.problem009
+  (:require [euler.level1.core :as core]))
 
 (defn triple-product [[a b c]]
   (* a b c))
 
 (defn maybe-pythagorean? [a b c]
-  (= (+ (square a) (square b)) (square c)))
+  (= (+ (core/square a) (core/square b)) (core/square c)))
 
 (defn find-triplets [target]
   (for [a (range 1 target)

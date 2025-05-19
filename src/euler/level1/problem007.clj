@@ -1,10 +1,8 @@
-(ns euler.level1.problem007)
-
-(defn is-prime? [cursor primes]
-  (not-any? #(zero? (mod cursor %)) primes))
+(ns euler.level1.problem007
+  (:require [euler.level1.core :as core]))
 
 (defn maybe-add-cursor-to-prime [cursor primes]
-  (if (is-prime? cursor primes)
+  (if (core/is-prime? cursor primes)
     (conj primes cursor)
     primes))
 

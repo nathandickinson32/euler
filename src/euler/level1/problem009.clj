@@ -7,7 +7,7 @@
 (defn maybe-pythagorean? [a b c]
   (= (+ (core/square a) (core/square b)) (core/square c)))
 
-(defn find-triplets [target]
+(defn pythagorean-triples [target]
   (for [a (range 1 target)
         b (range (inc a) target)
         :let [c (- target a b)]
@@ -16,6 +16,6 @@
     [a b c]))
 
 (defn euler-9 [target]
-  (-> (find-triplets target)
+  (-> (pythagorean-triples target)
       first
       triple-product))

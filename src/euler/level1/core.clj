@@ -9,8 +9,8 @@
   (zero? (mod cursor prime)))
 
 (defn is-prime? [cursor primes]
-  (not-any? #(divisible-by? cursor %)
-            (filtered-primes cursor primes)))
+  (->> (filtered-primes cursor primes)
+       (not-any? #(divisible-by? cursor %))))
 
 
 ;10
@@ -21,7 +21,7 @@
 ; we know 50 is a factor when we know 2 is a factor
 
 ; 23  √23 ~ 4.7
-; (cursor) <= (current prime^2) == (√cursor) >= (current prime)
+; cursor <= (current prime^2) == (√cursor) >= (current prime)
 ; [primes 2 3 5 7 11 13 17 19]
 ; 23/2 = 20.5   2 x 2 = 4  4 < 23
 ; 23/3 = 13.6   3 x 3 = 9  9 < 23

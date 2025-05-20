@@ -11,10 +11,10 @@
 
 (describe "Euler Problem #9"
 
-  (it "finds-triplets"
-    (should= [] (find-triplets 10))
-    (should= [[3 4 5]] (find-triplets 12))
-    (should= [[200 375 425]] (find-triplets 1000))
+  (it "finds pythagorean triplets"
+    (should= [] (pythagorean-triples 10))
+    (should= [[3 4 5]] (pythagorean-triples 12))
+    (should= [[200 375 425]] (pythagorean-triples 1000))
     )
 
   (it "declares if 3 numbers are pythagorean"

@@ -17,6 +17,10 @@
 (def test-grid-2 [[2 0]
                   [1 3]])
 
+(def test-grid-3 [[1 2 3]
+                  [4 5 6]
+                  [7 8 9]])
+
 (def euler-grid [[8 2 22 97 38 15 0 40 0 75 4 5 7 78 52 12 50 77 91 8]
                  [49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 4 56 62 0]
                  [81 49 31 73 55 79 14 29 93 71 40 67 53 88 30 3 49 13 36 65]
@@ -41,20 +45,42 @@
 (describe "Euler Problem #11"
 
   (it "checks for largest product from 2 adjacent numbers"
-    (should= 6 (->largest-row-product test-grid))
-    (should= 3 (->largest-row-product test-grid-1))
-    (should= 3 (->largest-row-product test-grid-2))
-    (should= 3 (->largest-row-product test-grid-2))
+    (should= 6 (->max-row-product test-grid 2))
+    (should= 3 (->max-row-product test-grid-1 2))
+    (should= 3 (->max-row-product test-grid-2 2))
+    (should= 3 (->max-row-product test-grid-2 2))
+    (should= 504 (->max-row-product test-grid-3 3))
     )
 
-  (it "checks for largest product from 2 numbers in a collum"
-    (should= 3 (->largest-collum-product test-grid))
-    (should= 6 (->largest-collum-product test-grid-1))
-    (should= 2 (->largest-collum-product test-grid-2))
+  (it "checks for largest product from 2 numbers in a column"
+    (should= 3 (->max-column-product test-grid 2))
+    (should= 6 (->max-column-product test-grid-1 2))
+    (should= 2 (->max-column-product test-grid-2 2))
+    (should= 162 (->max-column-product test-grid-3 3))
     )
 
-  ;(it "Solves #11"
-  ;  (should= -1 (euler-11 -1)))
+  (it "checks for largest product from 2 numbers down right diagonally"
+    (should= 0 (->max-down-right-diagonal-product test-grid 2))
+    (should= 0 (->max-down-right-diagonal-product test-grid-1 2))
+    (should= 6 (->max-down-right-diagonal-product test-grid-2 2))
+    (should= 45 (->max-down-right-diagonal-product test-grid-3 3))
+    )
+
+  (it "checks for largest product from 2 numbers down left diagonally"
+    (should= 2 (->max-down-left-diagonal-product test-grid 2))
+    (should= 2 (->max-down-left-diagonal-product test-grid-1 2))
+    (should= 0 (->max-down-left-diagonal-product test-grid-2 2))
+    (should= 105 (->max-down-left-diagonal-product test-grid-3 3))
+    )
+
+  (it "Solves #11"
+    (should= 6 (euler-11 test-grid 2))
+    (should= 6 (euler-11 test-grid-1 2))
+    (should= 6 (euler-11 test-grid-2 2))
+    (should= 6 (euler-11 test-grid-2 2))
+    (should= 504 (euler-11 test-grid-3 3))
+    (should= 70600674 (euler-11 euler-grid 4))
+    )
   )
 
 (run-specs)

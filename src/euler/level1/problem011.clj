@@ -1,19 +1,43 @@
 (ns euler.level1.problem011)
 
+(defn ->diagonal-range [grid n]
+  (range (- (count grid) (dec n))))
 
+(defn ->columns [grid column-index n]
+  (partition n 1 (map #(nth % column-index) grid)))
 
-(defn ->largest-row-product [grid]
-  (apply max (for [row (range (count grid))]
-    (apply * (get-in grid [row])))))
+(defn ->max-row-product [grid n]
+  (apply max
+         (for [row grid
+               window (partition n 1 row)]
+           (apply * window))))
 
-(defn ->largest-collum-product [grid]
-  (apply max (for [row (range (dec (count grid)))
-                  collum (range (count (first grid)))]
-              (* (get-in grid [row collum])
-                 (get-in grid [(inc row) collum])))))
+(defn ->max-column-product [grid n]
+  (apply max
+         (for [column-index (range (count (first grid)))
+               columns (->columns grid column-index n)]
+           (apply * columns))))
 
+(defn ->max-down-right-diagonal-product [grid n]
+  (apply max
+         (for [start-row (->diagonal-range grid n)
+               start-column (->diagonal-range grid n)]
+           (apply * (for [i (range n)]
+                      (get-in grid [(+ start-row i) (+ start-column i)]))))))
 
-(defn euler-11 [grid]
-  )
+(defn ->max-down-left-diagonal-product [grid n]
+  (apply max
+         (for [start-row (->diagonal-range grid n)
+               start-column (range (dec n) (count (first grid)))]
+           (apply *
+                  (for [i (range n)]
+                    (get-in grid [(+ start-row i) (- start-column i)]))))))
+
+(defn euler-11 [grid n]
+  (apply max
+         [(->max-row-product grid n)
+         (->max-column-product grid n)
+         (->max-down-right-diagonal-product grid n)
+         (->max-down-left-diagonal-product grid n)]))
 
 

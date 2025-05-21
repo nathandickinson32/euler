@@ -14,4 +14,6 @@
       (inc cursor) target)))
 
 (defn euler-10 [target]
-  (sum-up-primes [] 2 target))
+  (let [primes []
+        cursor 2]
+   (sum-up-primes primes cursor target)))

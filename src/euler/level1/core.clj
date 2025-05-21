@@ -13,7 +13,7 @@
        (not-any? #(divisible-by? cursor %))))
 
 
-;10
+;100
 ;2 x 50    50 x 2
 ;4 x 25    25 x 4
 ;5 x 20    20 x 5

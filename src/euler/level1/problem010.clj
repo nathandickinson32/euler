@@ -11,7 +11,8 @@
     (apply + primes)
     (recur
       (maybe-add-to-primes cursor primes)
-      (inc cursor) target)))
+      (inc cursor)
+      target)))
 
 (defn euler-10 [target]
   (let [primes []

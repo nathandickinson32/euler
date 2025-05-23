@@ -18,12 +18,12 @@
     )
 
   (it "declares if 3 numbers are pythagorean"
-    (should= false (maybe-pythagorean? 1 2 3))
-    (should= false (maybe-pythagorean? 3 4 6))
-    (should= true (maybe-pythagorean? 3 4 5))
-    (should= true (maybe-pythagorean? 5 12 13))
-    (should= true (maybe-pythagorean? 8 15 17))
-    (should= true (maybe-pythagorean? 200 375 425))
+    (should= false (pythagorean? 1 2 3))
+    (should= false (pythagorean? 3 4 6))
+    (should= true (pythagorean? 3 4 5))
+    (should= true (pythagorean? 5 12 13))
+    (should= true (pythagorean? 8 15 17))
+    (should= true (pythagorean? 200 375 425))
     )
 
   (it "gets triple product"
@@ -34,6 +34,9 @@
     )
 
   (it "Solves #9"
+    ;(should= (* 3 4 5) (euler-9 13))
+    (should= (* 3 4 5) (euler-9 12))
+    (should= 6240 (euler-9 60))
     (should= 31875000 (euler-9 1000))
     )
 

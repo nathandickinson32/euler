@@ -26,6 +26,10 @@
                       (get-in grid [(+ start-row i) (+ start-column i)]))))))
 
 (defn ->max-down-left-diagonal-product [grid n]
+  ;(for [start-row (->diagonal-range grid n)
+  ;      start-column (range (dec n) (count (first grid)))]
+  ;  (for [i (range n)]
+  ;    (get-in grid [(+ start-row i) (- start-column i)])))
   (apply max
          (for [start-row (->diagonal-range grid n)
                start-column (range (dec n) (count (first grid)))]
@@ -34,10 +38,18 @@
                     (get-in grid [(+ start-row i) (- start-column i)]))))))
 
 (defn euler-11 [grid n]
+  ;(->> (concat
+  ;       (row-windows grid n)
+  ;       (column-windows grid n)
+  ;       (right-diagonal-windows grid n)
+  ;       (left-diagonal-windows grid n))
+  ;     (map #(apply * %))
+  ;     (apply max))
+
   (apply max
          [(->max-row-product grid n)
-         (->max-column-product grid n)
-         (->max-down-right-diagonal-product grid n)
-         (->max-down-left-diagonal-product grid n)]))
+          (->max-column-product grid n)
+          (->max-down-right-diagonal-product grid n)
+          (->max-down-left-diagonal-product grid n)]))
 
 

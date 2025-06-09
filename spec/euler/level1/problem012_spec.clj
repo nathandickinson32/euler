@@ -35,7 +35,8 @@
       (should= 10 (sut/->triangle-number 4)))
 
     (it "returns 28 for 7"
-      (should= 28 (sut/->triangle-number 7))))
+      (should= 28 (sut/->triangle-number 7)))
+    )
 
   (context "when counting divisors"
 
@@ -49,7 +50,8 @@
       (should= 4 (sut/count-divisors 6)))
 
     (it "returns 6 for 28"
-      (should= 6 (sut/count-divisors 28))))
+      (should= 6 (sut/count-divisors 28)))
+    )
 
   (context "solving euler 12 with a divisor count target"
 
@@ -65,8 +67,8 @@
     (it "returns 28 for 5"
       (should= 28 (sut/euler-12 5)))
 
-    #_(it "Solves #12"
-    (should= -1 (sut/euler-12 500)))
+    (it "Solves #12"
+      (should= 76576500 (sut/euler-12 500)))
     )
   )
 

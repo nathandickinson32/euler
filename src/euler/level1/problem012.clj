@@ -28,6 +28,12 @@
 (defn ->triangle-number [n]
   (/ (* n (inc n)) 2))
 
+(defn- asd [i limit]
+  (let [tri-num  (->triangle-number i)
+        divisors (count-divisors tri-num)]
+    (when (> divisors limit)
+      tri-num)))
+
 (defn euler-12 [limit]
   (loop [i 1]
     (let [tri-num  (->triangle-number i)

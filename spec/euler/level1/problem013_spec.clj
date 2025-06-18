@@ -118,7 +118,7 @@
     (it "returns 1 for [[0] [1]]"
       (should= 1 (->sum-of-numbers [[0] [1]])))
 
-    (it "returns 1 for [[0] [1] [1]]"
+    (it "returns 2 for [[0] [1] [1]]"
       (should= 2 (->sum-of-numbers [[0] [1] [1]])))
 
     (it "returns 22 for [[11]] [11]]"
@@ -140,7 +140,7 @@
       (should= "1234567890" (->string-number 12345678901)))
     )
 
-  (context "when getting digits from a sum of a list of numbers"
+  (context "when getting 10 digits from a sum of a list of numbers"
 
     (it "returns 0 for [[0]]"
       (should= "0" (euler-13 [[0]])))

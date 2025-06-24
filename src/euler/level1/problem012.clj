@@ -25,19 +25,23 @@
         divisor-count (->divisor-count divisor-range tri-num)]
     (apply + divisor-count)))
 
+(def memo-div-count (memoize count-divisors))
+
 (defn ->triangle-number [n]
   (/ (* n (inc n)) 2))
 
+(def memoized-triangle-number (memoize ->triangle-number))
+
 (defn- asd [i limit]
-  (let [tri-num  (->triangle-number i)
-        divisors (count-divisors tri-num)]
+  (let [tri-num  (memoized-triangle-number i)
+        divisors (memo-div-count tri-num)]
     (when (> divisors limit)
       tri-num)))
 
 (defn euler-12 [limit]
   (loop [i 1]
-    (let [tri-num  (->triangle-number i)
-          divisors (count-divisors tri-num)]
+    (let [tri-num  (memoized-triangle-number i)
+          divisors (memo-div-count tri-num)]
       (if (> divisors limit)
         tri-num
         (recur (inc i))))))
